@@ -24,3 +24,13 @@ function Card(props) {
 export default Card;
 
 // We can use multiple hooks
+
+// Rules of Hooks
+
+// Only call Hooks at the top level. Don’t call Hooks
+// inside loops, conditions, or nested functions.
+
+// Only call Hooks from React function components.
+
+// -> you will see this in a moment when we create our ownCustomHook
+// that they are regular javascript functions, but they rely on react internal mechanisism

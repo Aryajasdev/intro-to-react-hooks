@@ -1,7 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { ThemeContext } from "./themeContext";
-import { useMousePosition } from "./MousePosition";
+// import { ThemeContext } from "./themeContext";
+// import { useMousePosition } from "./MousePosition";
+import { ThemeContext } from "../themeContext";
+import { useMousePosition } from "../MousePosition";
 
 function Card(props) {
   const name = useFormInput("Morty");
@@ -44,6 +46,8 @@ function useDocumentTitle(title) {
   }, [title]);
 }
 
+// Custom hooks give you the flexibility to create your own abstractions
+// that don't inflate the react component tree
 function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -52,9 +56,11 @@ function useWindowWidth() {
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
+      // Side-effect cleanup
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+  // Skipping side-effects
 
   return width;
 }

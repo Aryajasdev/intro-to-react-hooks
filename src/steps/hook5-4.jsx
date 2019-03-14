@@ -4,18 +4,18 @@ import React, { useState, useContext, useEffect } from "react";
 import { ThemeContext } from "../themeContext";
 
 function Card(props) {
-  const name = useFormInput("Morty");
-  const surname = useFormInput("Smith");
+  const nameInput = useFormInput("Morty");
+  const surnameInput = useFormInput("Smith");
   const theme = useContext(ThemeContext);
   const width = useWindowWidth();
 
-  useDocumentTitle(`${name.value} ${surname.value}`);
+  useDocumentTitle(`${nameInput.value} ${surnameInput.value}`);
 
   return (
     <div className={theme}>
       Full name
-      <input {...name} />
-      <input {...surname} />
+      <input {...nameInput} />
+      <input {...surnameInput} />
       <div>{width}</div>
     </div>
   );
@@ -23,7 +23,10 @@ function Card(props) {
 
 export default Card;
 
-function useFormInput(initialValue) {
+// This is probably an overkill, but it illustrates the point
+// how well you can reuse stateful logic
+
+export function useFormInput(initialValue) {
   const [value, setValue] = useState(initialValue);
 
   function handleChange(event) {
@@ -36,13 +39,13 @@ function useFormInput(initialValue) {
   };
 }
 
-function useDocumentTitle(title) {
+export function useDocumentTitle(title) {
   useEffect(() => {
     document.title = title;
   });
 }
 
-function useWindowWidth() {
+export function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {

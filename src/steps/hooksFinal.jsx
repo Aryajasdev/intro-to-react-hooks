@@ -27,7 +27,7 @@ function Card(props) {
 
 export default Card;
 
-function useFormInput(initialValue) {
+export function useFormInput(initialValue) {
   const [value, setValue] = useState(initialValue);
 
   function handleChange(event) {
@@ -40,15 +40,17 @@ function useFormInput(initialValue) {
   };
 }
 
-function useDocumentTitle(title) {
+export function useDocumentTitle(title) {
   useEffect(() => {
     document.title = title;
   }, [title]);
+  // Skipping side-effects
+
+  // And we can probably skip some side-effect here as well
+  // We only want to change the document.title when the title prop changes
 }
 
-// Custom hooks give you the flexibility to create your own abstractions
-// that don't inflate the react component tree
-function useWindowWidth() {
+export function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -56,11 +58,24 @@ function useWindowWidth() {
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
-      // Side-effect cleanup
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
   // Skipping side-effects
+
+  // The default behavior for effects is to fire the effect
+  // after every completed render. That way an effect is
+  // always recreated if one of its dependencies changes.
+
+  // This is probably an overkill here, bacuase we don't want to
+  // add and remove event listeners on every completed render.
+
+  // We want to do this once on componendDidMount and componentWillUnmount
+
+  // To implement this, we ahve to pass a second argument
+  // to useEffect that is the array of values that the effect depends on.
+
+  // Since it doesn't depend on anything we can just pass an empty array
 
   return width;
 }

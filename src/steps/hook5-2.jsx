@@ -33,7 +33,12 @@ function Card(props) {
 
 export default Card;
 
-function useWindowWidth() {
+// Custom hooks give you the flexibility to create your own abstractions
+// that don't inflate the react component tree
+
+// export -> useWindowWidth can be shared
+
+export function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {

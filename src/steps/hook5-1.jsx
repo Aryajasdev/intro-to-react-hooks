@@ -14,6 +14,8 @@ function Card(props) {
     window.addEventListener("resize", handleWindowResize);
 
     return () => {
+      // Often, effects create resources that need to be cleaned up
+      // before the component leaves the screen, such as a eventListeners
       window.removeEventListener("resize", handleWindowResize);
     };
   });
@@ -41,3 +43,5 @@ function Card(props) {
 }
 
 export default Card;
+
+// Notice how the logic is split across life-cycle methods

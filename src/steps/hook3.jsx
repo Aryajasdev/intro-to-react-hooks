@@ -26,3 +26,6 @@ function Card(props) {
 }
 
 export default Card;
+
+// Notice how it doesn't inflates the JSX
+// Notice how it doesn't gives us a false sense of hierarchy

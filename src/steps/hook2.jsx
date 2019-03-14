@@ -22,3 +22,5 @@ function Card(props) {
 }
 
 export default Card;
+
+// We can use multiple hooks

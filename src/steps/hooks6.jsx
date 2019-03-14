@@ -27,7 +27,9 @@ function Card(props) {
 
 export default Card;
 
-function useFormInput(initialValue) {
+// Notice how it doesn't gives us a false sense of hierarchy
+
+export function useFormInput(initialValue) {
   const [value, setValue] = useState(initialValue);
 
   function handleChange(event) {
@@ -40,13 +42,13 @@ function useFormInput(initialValue) {
   };
 }
 
-function useDocumentTitle(title) {
+export function useDocumentTitle(title) {
   useEffect(() => {
     document.title = title;
   });
 }
 
-function useWindowWidth() {
+export function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {

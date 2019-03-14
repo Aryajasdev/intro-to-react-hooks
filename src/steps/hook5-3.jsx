@@ -31,13 +31,13 @@ function Card(props) {
 
 export default Card;
 
-function useDocumentTitle(title) {
+export function useDocumentTitle(title) {
   useEffect(() => {
     document.title = title;
   });
 }
 
-function useWindowWidth() {
+export function useWindowWidth() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {

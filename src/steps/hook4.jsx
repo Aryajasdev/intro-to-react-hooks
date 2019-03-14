@@ -30,3 +30,8 @@ function Card(props) {
 }
 
 export default Card;
+
+// Notice how the logic is split across life-cycle methods
+
+// By default, effects run after every completed render
+// but you can choose to fire it only when certain values have changed

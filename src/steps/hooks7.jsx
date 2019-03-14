@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 
 import { ThemeContext } from "./themeContext";
-
 import { useMousePosition } from "./MousePosition";
 
 function Card(props) {
